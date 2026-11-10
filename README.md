@@ -35,6 +35,6 @@ FastAPI, Uvicorn, psycopg2, image resmi python dan postgres dari Docker Hub.
 
 ## AI Usage Declaration
 - Alat: Claude (Anthropic)
-- Bagian yang dibantu: ide projek, kerangka kode FastAPI, Dockerfile, docker-compose.yml, debugging error Git dan Docker
-- Contoh prompt: "Bantu aku mengerjakan UTS ini, project yang dipilih yang bagus ya"; "bantu aku commit"
-- Saya memahami dan dapat menjelaskan setiap baris Dockerfile dan docker-compose.yml.
+- Bagian yang dibantu: ide projek, debugging error Git dan Docker
+- Contoh prompt: "Bantu aku debugging error ini with no mistakes".
+
