@@ -1,9 +1,17 @@
 import os
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import psycopg2
 
 app = FastAPI()
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+@app.get("/", include_in_schema=False)
+def index():
+    return FileResponse(os.path.join(STATIC_DIR, "index.html"))
 
 def conn():
     return psycopg2.connect(
@@ -19,6 +27,10 @@ def init():
 
 class Trade(BaseModel):
     pair: str; side: str; lot: float; entry: float; exit: float
+
+@app.get("/", include_in_schema=False)
+def index():
+    return FileResponse(os.path.join(os.path.dirname(__file__), "static", "index.html"))
 
 @app.get("/health")
 def health(): return {"status": "ok"}
